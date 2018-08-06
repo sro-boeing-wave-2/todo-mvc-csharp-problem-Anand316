@@ -10,6 +10,7 @@ namespace Web_api_2.Models
         public int ID { get; set; }
         public string ListOne { get; set; }
         public string ListTwo { get; set; }
+        //public List<string> list { get; set; }
 
     }
 }

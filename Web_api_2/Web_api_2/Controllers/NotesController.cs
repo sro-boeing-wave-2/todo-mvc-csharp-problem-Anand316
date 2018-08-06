@@ -22,14 +22,14 @@ namespace Web_api_2.Controllers
 
         // GET: api/Notes
         [HttpGet]
-        public IQueryable<Note> GetNote()
+        public IEnumerable<Note> GetNote()
         {
-            return _context.Note.Include(i=>i.CList).Include(i=>i.Labels).AsQueryable();
+            return  _context.Note.Include(i => i.CList).Include(i => i.Labels);
         }
 
         // GET: api/Notes/5
-        [HttpGet("{id}")]
-        public async Task<IActionResult> GetNote([FromRoute] string id)
+        [HttpGet("{title}")]
+        public async Task<IActionResult> GetNoteByTitle([FromRoute] string title)
         {
             List<Note> x = new List<Note>();
             if (!ModelState.IsValid)
@@ -37,7 +37,7 @@ namespace Web_api_2.Controllers
                 return BadRequest(ModelState);
             }
 
-            var note = await GetNote().Where(z => z.Title == id).ToListAsync();
+            var note = await _context.Note.Include(i => i.CList).Include(i => i.Labels).Where(z => z.Title == title).ToListAsync();
 
             if (note == null)
             {
@@ -46,6 +46,44 @@ namespace Web_api_2.Controllers
 
             return Ok(note);
         }
+
+        [HttpGet("Pin/{pin}")]
+        public async Task<IActionResult> GetNoteByPin([FromRoute] bool pin)
+        {
+            List<Note> x = new List<Note>();
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            var note = await _context.Note.Include(i => i.CList).Include(i => i.Labels).Where(z => z.Pin == pin).ToListAsync();
+
+            if (note == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(note);
+        }
+
+        [HttpGet("getLabel/{id}")]
+        public async Task<IActionResult> GetNoteByLabel([FromRoute] string Text)
+        {
+            
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            var note = await _context.Note.Include(i=>i.CList).Include(i=>i.Labels).Where(z => z.Labels.Exists(x=>x.Text==Text )).ToListAsync();
+
+            if (note == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(note);
+        } 
 
         // PUT: api/Notes/5
         [HttpPut("{id}")]
@@ -60,8 +98,12 @@ namespace Web_api_2.Controllers
             {
                 return BadRequest();
             }
+            //GetNote().Where(i => i.ID == id).ForEachAsync(z => { z = note; });
 
-            _context.Entry(note).State = EntityState.Modified;
+
+            _context.Note.Update(note);
+            //_context.Entry(note).State = EntityState.Modified;
+            
 
             try
             {
@@ -99,21 +141,20 @@ namespace Web_api_2.Controllers
 
         // DELETE: api/Notes/5
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteNote([FromRoute] string id)
+        public async Task<IActionResult> DeleteNote([FromRoute] string title)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            var note = await GetNote().Where(z => z.Title == id).ToListAsync();
+            var note = await _context.Note.Include(i => i.CList).Include(i => i.Labels).Where(z => z.Title == title).ToListAsync();
             if (note == null)
             {
                 return NotFound();
             }
 
-            _context.Note.Remove(note);
-            _context.Note.ForEachAsync(x=> { });
+            _context.Note.RemoveRange(note);
             await _context.SaveChangesAsync();
 
             return Ok(note);

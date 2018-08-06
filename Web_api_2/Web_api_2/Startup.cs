@@ -31,6 +31,8 @@ namespace Web_api_2
 
             services.AddDbContext<NotesContext>(options =>
                     options.UseSqlServer(Configuration.GetConnectionString("NotesContext")));
+
+            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
