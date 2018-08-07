@@ -140,7 +140,7 @@ namespace Web_api_2.Controllers
         }
 
         // DELETE: api/Notes/5
-        [HttpDelete("{id}")]
+        [HttpDelete("{title}")]
         public async Task<IActionResult> DeleteNote([FromRoute] string title)
         {
             if (!ModelState.IsValid)

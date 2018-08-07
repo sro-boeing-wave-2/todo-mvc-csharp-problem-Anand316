@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
 using System.Linq;
 using System.Threading.Tasks;
+using Moq;
 
 namespace web
 {
@@ -26,7 +27,8 @@ namespace web
 
         private void CreateData(NotesContext todocontext)
         {
-            var notes = new Note
+            var notes = new List<Note>
+            { new Note()
             {
                 Title = "Anand",
                 PlainText = "Hello World",
@@ -34,6 +36,14 @@ namespace web
                 Labels = new List<Labels>() { new Labels {Text="Label_1" },new Labels { Text="Label_2"} },
                 CList=new List<CheckList>() { new CheckList {ListOne="1",ListTwo="2"} }
 
+            },
+             new Note(){
+                 Title = "Anand",
+                PlainText = "Hello World",
+                Pin = true,
+                Labels = new List<Labels>() { new Labels {Text="Label_1" },new Labels { Text="Label_2"} },
+                CList=new List<CheckList>() { new CheckList {ListOne="1",ListTwo="2"} }
+             }
             };
 
             todocontext.AddRange(notes);
@@ -46,16 +56,30 @@ namespace web
         {
 
             var result = controller.GetNote().ToList();
-            Console.WriteLine(result.Count);
-            Assert.Equal(1, result.Count);
+            //Console.WriteLine(result.Count);
+            Assert.Equal(2, result.Count);
         }
 
         [Fact]
-        public void TestGetByTitle()
+        public async Task TestGetByTitle()
         {
-            var result = controller.GetNoteByTitle("Anand");
-            Console.WriteLine(result.Id);
-            Assert.Equal(1, result.Id);
+            var result = await controller.GetNoteByTitle("Anand");
+            var resultAsOkObjectResult = result as OkObjectResult;
+            //Assert.True(condition: result, OkObjectResult);
+            var notes = resultAsOkObjectResult.Value as List<Note>;
+            //Assert.Equal(notes.Select(x=>x.Title=="Anand").Count,notes.Count);
+            Assert.NotNull(notes);
+        }
+
+        [Fact]
+        public async Task TestGetByPin()
+        {
+            var result =await  controller.GetNoteByPin(true);
+            var resultAsOkObjectResult = result as OkObjectResult;
+            //Assert.True(condition: result, OkObjectResult);
+            var notes = resultAsOkObjectResult.Value as List<Note>;
+            
+            Assert.NotNull(result);
         }
 
         [Fact]
@@ -75,13 +99,14 @@ namespace web
             var okResult = result.Should().BeOfType<CreatedAtActionResult>().Subject;
             var notes = okResult.Value.Should().BeAssignableTo<Note>().Subject;
             //var notes = controller.GetNote().ToList();
-           // Assert.Equal(2, notes.Count);
+            Assert.Equal(notes,note);
            
         }
 
         [Fact]
         public async Task TestPut()
         {
+            
             var notes = new Note
             {
                 Title = "Anand Kumar",
@@ -92,9 +117,23 @@ namespace web
 
             };
 
-            var result = await controller.PutNote(2, notes);
-            var okResult = result.Should().BeOfType<NoContentResult>().Subject;
-            //var note = okResult.Value.Should().BeAssignableTo<Note>().Subject;
+            var result = await controller.PostNote(notes);
+            var resultAsOkObjectResult = result as CreatedAtActionResult;
+            //Assert.True(condition: result, OkObjectResult);
+            var note = resultAsOkObjectResult.Value as Note;
+            //Assert.NotNull(note);
+            Assert.Equal(note.Title, notes.Title);
+        }
+
+        [Fact]
+        public async Task TestDelete()
+        {
+            var Response = await controller.DeleteNote("Cars");
+            var resultAsOkObjectResult = Response as OkObjectResult;
+            //Assert.True(condition: result, OkObjectResult);
+            //var notes = resultAsOkObjectResult.Value as List<Note>;
+            Assert.Equal("200", resultAsOkObjectResult.StatusCode.ToString());
         }
     }
 }
+

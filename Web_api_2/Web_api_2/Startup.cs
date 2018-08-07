@@ -12,27 +12,42 @@ using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Microsoft.EntityFrameworkCore;
 using Web_api_2.Models;
+using System.ComponentModel.Design;
 
-namespace Web_api_2
+
+namespace ToDoAssignment
 {
     public class Startup
     {
-        public Startup(IConfiguration configuration)
+        public IConfiguration Configuration { get; }
+        public IHostingEnvironment Environment { get; }
+
+        public Startup(IConfiguration configuration, IHostingEnvironment environment)
         {
             Configuration = configuration;
+            Environment = environment;
         }
 
-        public IConfiguration Configuration { get; }
+        
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
-
-            services.AddDbContext<NotesContext>(options =>
+           /* services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new Info { Title = "My API", Version = "v1" });
+            });*/
+            if (Environment.IsEnvironment("Testing"))
+            {
+                services.AddDbContext<NotesContext>(options =>
+                    options.UseInMemoryDatabase("TestDB"));
+            }
+            else
+            {
+                services.AddDbContext<NotesContext>(options =>
                     options.UseSqlServer(Configuration.GetConnectionString("NotesContext")));
-
-            
+            }
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -46,7 +61,13 @@ namespace Web_api_2
             {
                 app.UseHsts();
             }
-
+           // app.UseSwagger();
+           /* app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
+                // c.RoutePrefix = string.Empty;
+            });*/
+            
             app.UseHttpsRedirection();
             app.UseMvc();
         }
