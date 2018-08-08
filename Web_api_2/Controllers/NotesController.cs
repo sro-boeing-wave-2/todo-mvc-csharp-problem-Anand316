@@ -66,7 +66,7 @@ namespace Web_api_2.Controllers
             return Ok(note);
         }
 
-        [HttpGet("getLabel/{id}")]
+        [HttpGet("getLabel/{text}")]
         public async Task<IActionResult> GetNoteByLabel([FromRoute] string Text)
         {
             

@@ -1,0 +1,17 @@
+D:\workspace\aspdotnet\todo-mvc-csharp-problem-Anand316\web\bin\Debug\netcoreapp2.1\xunit.runner.visualstudio.dotnetcore.testadapter.dll
+D:\workspace\aspdotnet\todo-mvc-csharp-problem-Anand316\web\bin\Debug\netcoreapp2.1\xunit.runner.reporters.netcoreapp10.dll
+D:\workspace\aspdotnet\todo-mvc-csharp-problem-Anand316\web\bin\Debug\netcoreapp2.1\xunit.runner.utility.netcoreapp10.dll
+D:\workspace\aspdotnet\todo-mvc-csharp-problem-Anand316\web\bin\Debug\netcoreapp2.1\web_api.Tests.deps.json
+D:\workspace\aspdotnet\todo-mvc-csharp-problem-Anand316\web\bin\Debug\netcoreapp2.1\web_api.Tests.runtimeconfig.json
+D:\workspace\aspdotnet\todo-mvc-csharp-problem-Anand316\web\bin\Debug\netcoreapp2.1\web_api.Tests.runtimeconfig.dev.json
+D:\workspace\aspdotnet\todo-mvc-csharp-problem-Anand316\web\bin\Debug\netcoreapp2.1\web_api.Tests.dll
+D:\workspace\aspdotnet\todo-mvc-csharp-problem-Anand316\web\bin\Debug\netcoreapp2.1\web_api.Tests.pdb
+D:\workspace\aspdotnet\todo-mvc-csharp-problem-Anand316\web\bin\Debug\netcoreapp2.1\Web_api.dll
+D:\workspace\aspdotnet\todo-mvc-csharp-problem-Anand316\web\bin\Debug\netcoreapp2.1\Web_api.pdb
+D:\workspace\aspdotnet\todo-mvc-csharp-problem-Anand316\web\obj\Debug\netcoreapp2.1\web_api.Tests.csprojAssemblyReference.cache
+D:\workspace\aspdotnet\todo-mvc-csharp-problem-Anand316\web\obj\Debug\netcoreapp2.1\web_api.Tests.csproj.CoreCompileInputs.cache
+D:\workspace\aspdotnet\todo-mvc-csharp-problem-Anand316\web\obj\Debug\netcoreapp2.1\web_api.Tests.AssemblyInfoInputs.cache
+D:\workspace\aspdotnet\todo-mvc-csharp-problem-Anand316\web\obj\Debug\netcoreapp2.1\web_api.Tests.AssemblyInfo.cs
+D:\workspace\aspdotnet\todo-mvc-csharp-problem-Anand316\web\obj\Debug\netcoreapp2.1\web_api.Tests.csproj.CopyComplete
+D:\workspace\aspdotnet\todo-mvc-csharp-problem-Anand316\web\obj\Debug\netcoreapp2.1\web_api.Tests.dll
+D:\workspace\aspdotnet\todo-mvc-csharp-problem-Anand316\web\obj\Debug\netcoreapp2.1\web_api.Tests.pdb

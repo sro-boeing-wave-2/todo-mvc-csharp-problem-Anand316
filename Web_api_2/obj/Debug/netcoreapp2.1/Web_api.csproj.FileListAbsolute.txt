@@ -1,0 +1,14 @@
+D:\workspace\aspdotnet\todo-mvc-csharp-problem-Anand316\Web_api_2\bin\Debug\netcoreapp2.1\Web_api.deps.json
+D:\workspace\aspdotnet\todo-mvc-csharp-problem-Anand316\Web_api_2\bin\Debug\netcoreapp2.1\Web_api.runtimeconfig.json
+D:\workspace\aspdotnet\todo-mvc-csharp-problem-Anand316\Web_api_2\bin\Debug\netcoreapp2.1\Web_api.runtimeconfig.dev.json
+D:\workspace\aspdotnet\todo-mvc-csharp-problem-Anand316\Web_api_2\bin\Debug\netcoreapp2.1\Web_api.dll
+D:\workspace\aspdotnet\todo-mvc-csharp-problem-Anand316\Web_api_2\bin\Debug\netcoreapp2.1\Web_api.pdb
+D:\workspace\aspdotnet\todo-mvc-csharp-problem-Anand316\Web_api_2\obj\Debug\netcoreapp2.1\Web_api.csprojAssemblyReference.cache
+D:\workspace\aspdotnet\todo-mvc-csharp-problem-Anand316\Web_api_2\obj\Debug\netcoreapp2.1\Web_api.csproj.CoreCompileInputs.cache
+D:\workspace\aspdotnet\todo-mvc-csharp-problem-Anand316\Web_api_2\obj\Debug\netcoreapp2.1\Web_api.RazorAssemblyInfo.cache
+D:\workspace\aspdotnet\todo-mvc-csharp-problem-Anand316\Web_api_2\obj\Debug\netcoreapp2.1\Web_api.RazorAssemblyInfo.cs
+D:\workspace\aspdotnet\todo-mvc-csharp-problem-Anand316\Web_api_2\obj\Debug\netcoreapp2.1\Web_api.AssemblyInfoInputs.cache
+D:\workspace\aspdotnet\todo-mvc-csharp-problem-Anand316\Web_api_2\obj\Debug\netcoreapp2.1\Web_api.AssemblyInfo.cs
+D:\workspace\aspdotnet\todo-mvc-csharp-problem-Anand316\Web_api_2\obj\Debug\netcoreapp2.1\Web_api.RazorTargetAssemblyInfo.cache
+D:\workspace\aspdotnet\todo-mvc-csharp-problem-Anand316\Web_api_2\obj\Debug\netcoreapp2.1\Web_api.dll
+D:\workspace\aspdotnet\todo-mvc-csharp-problem-Anand316\Web_api_2\obj\Debug\netcoreapp2.1\Web_api.pdb

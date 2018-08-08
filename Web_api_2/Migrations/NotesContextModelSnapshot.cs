@@ -65,7 +65,8 @@ namespace Web_api_2.Migrations
 
                     b.Property<string>("PlainText");
 
-                    b.Property<string>("Title");
+                    b.Property<string>("Title")
+                        .IsRequired();
 
                     b.HasKey("ID");
 

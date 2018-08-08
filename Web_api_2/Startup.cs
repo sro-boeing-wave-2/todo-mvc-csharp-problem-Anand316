@@ -11,6 +11,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Microsoft.EntityFrameworkCore;
+using Swashbuckle.AspNetCore.Swagger;
 using Web_api_2.Models;
 
 namespace ToDoAssignment
@@ -30,6 +31,12 @@ namespace ToDoAssignment
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new Info { Title = "First API using SWAGGER", Version = "v1" });
+            });
+
             if (Environment.IsEnvironment("Testing"))
             {
                 services.AddDbContext<NotesContext>(options =>
@@ -53,6 +60,18 @@ namespace ToDoAssignment
             {
                 app.UseHsts();
             }
+
+            app.UseSwagger();
+
+            // Enable middleware to serve swagger-ui (HTML, JS, CSS, etc.), 
+            // specifying the Swagger JSON endpoint.
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "First API using SWAGGER V1");
+                //c.RoutePrefix = string.Empty;
+
+            });
+
 
             app.UseHttpsRedirection();
             app.UseMvc();

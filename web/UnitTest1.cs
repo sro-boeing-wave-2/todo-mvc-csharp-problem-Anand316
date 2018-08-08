@@ -11,25 +11,26 @@ using System.Threading.Tasks;
 
 namespace web
 {
-    public class UnitTest1
+    public class NotesControllerUnitTest
     {
+        private readonly NotesContext todocontext;
         private NotesController controller;
 
-        public UnitTest1()
+        public NotesControllerUnitTest()
         {
             var optionBuilder = new DbContextOptionsBuilder<NotesContext>();
             optionBuilder.UseInMemoryDatabase("TestDB");
-            var todocontext = new NotesContext(optionBuilder.Options);
+            todocontext = new NotesContext(optionBuilder.Options);
             controller = new NotesController(todocontext);
-            CreateData(todocontext);
+            CreateData();
         }
 
-        private void CreateData(NotesContext todocontext)
+        private void CreateData()
         {
-            var notes = new List<Note>()
+            List<Note> notes = new List<Note>()
             { new Note()
             {
-                Title = "Mobiles",
+                Title = "Cars",
                 PlainText = "New Moibiles",
                 Pin = true,
                 Labels = new List<Labels>() { new Labels {Text="Label_1" },new Labels { Text="Label_2"} },
@@ -41,7 +42,7 @@ namespace web
                 Title = "Bikes",
                 PlainText = "New Bikes",
                 Pin = true,
-                Labels = new List<Labels>() { new Labels {Text="Label_1" },new Labels { Text="Label_2"} },
+                Labels = new List<Labels>() { new Labels {Text="Label_3" },new Labels { Text="Label_4"} },
                 CList=new List<CheckList>() { new CheckList {ListOne="1",ListTwo="2"} }
             } };
 
@@ -56,18 +57,23 @@ namespace web
 
             var result = controller.GetNote().ToList();
             Console.WriteLine(result.Count);
+            foreach(Note x in result)
+            {
+                Console.WriteLine(x.Title);
+            }
             Assert.Equal(2, result.Count);
         }
 
         [Fact]
         public async Task TestGetByTitle()
         {
-            var result = await controller.GetNoteByTitle("Mobiles");
+            var result = await controller.GetNoteByTitle("Cars");
             var resultAsOkObjectResult = result as OkObjectResult;
-            //Assert.True(condition: result, OkObjectResult);
             var notes = resultAsOkObjectResult.Value as List<Note>;
-            //Assert.Equal(notes.Select(x=>x.Title=="Anand").Count,notes.Count);
-            Assert.NotNull(notes);
+            foreach(Note note in notes)
+            {
+                Assert.Equal("Cars", note.Title);
+            }
         }
 
         [Fact]
@@ -75,10 +81,21 @@ namespace web
         {
             var result = await controller.GetNoteByPin(true);
             var resultAsOkObjectResult = result as OkObjectResult;
-            //Assert.True(condition: result, OkObjectResult);
             var notes = resultAsOkObjectResult.Value as List<Note>;
 
-            Assert.NotNull(result);
+            foreach(Note note in notes)
+            {
+                Assert.True(note.Pin);
+            }
+        }
+
+        [Fact]
+        public async Task TestGetByLabel()
+        {
+            var result = await controller.GetNoteByLabel("Label_3");
+            var resultAsOkObjectResult = result as OkObjectResult;
+            var notes = resultAsOkObjectResult.Value as List<Note>;
+            Assert.NotEmpty(notes);
         }
 
         [Fact]
@@ -94,11 +111,10 @@ namespace web
 
             };
             var result = await controller.PostNote(note);
-            Console.WriteLine(result);
-            var okResult = result.Should().BeOfType<CreatedAtActionResult>().Subject;
-            var notes = okResult.Value.Should().BeAssignableTo<Note>().Subject;
-            //var notes = controller.GetNote().ToList();
-           // Assert.Equal(2, notes.Count);
+            var resultAsOkObjectResult = result as CreatedAtActionResult;
+            var noteReturn = resultAsOkObjectResult.Value as Note;
+            Assert.Equal(note.PlainText, noteReturn.PlainText);
+            
         }
 
         [Fact]
@@ -116,10 +132,21 @@ namespace web
 
             var result = await controller.PostNote(notes);
             var resultAsOkObjectResult = result as CreatedAtActionResult;
-            //Assert.True(condition: result, OkObjectResult);
             var note = resultAsOkObjectResult.Value as Note;
-            //Assert.NotNull(note);
             Assert.Equal(note.Title, notes.Title);
+        }
+
+        [Fact]
+        public async Task TestDelete()
+        {
+            var result = await controller.DeleteNote("Cars");
+            var resultAsOkObjectResult = result as OkObjectResult;
+            var notes = resultAsOkObjectResult.Value as List<Note>;
+            foreach(Note note in notes)
+            {
+                Assert.Equal("Cars", note.Title);
+            }
+
         }
     }
 }
