@@ -1,7 +1,7 @@
 {
   "runtimeTarget": {
     "name": ".NETCoreApp,Version=v2.1",
-    "signature": "cc544e2eb0fa44c327369374bd8adb459f4d3981"
+    "signature": "36075244317bad6b221f088ef608ca641203f054"
   },
   "compilationOptions": {},
   "targets": {
@@ -9,7 +9,6 @@
       "web/1.0.0": {
         "dependencies": {
           "FluentAssertions": "5.4.1",
-          "Microsoft.AspNet.WebApi.WebHost": "5.2.6",
           "Microsoft.AspNetCore.Diagnostics": "2.1.1",
           "Microsoft.AspNetCore.HttpsPolicy": "2.1.1",
           "Microsoft.AspNetCore.Mvc": "2.1.1",
@@ -34,40 +33,6 @@
           "lib/netcoreapp2.0/FluentAssertions.dll": {
             "assemblyVersion": "5.4.1.0",
             "fileVersion": "5.4.1.0"
-          }
-        }
-      },
-      "Microsoft.AspNet.WebApi.Client/5.2.6": {
-        "dependencies": {
-          "Newtonsoft.Json": "11.0.2",
-          "Newtonsoft.Json.Bson": "1.0.1"
-        },
-        "runtime": {
-          "lib/netstandard2.0/System.Net.Http.Formatting.dll": {
-            "assemblyVersion": "5.2.6.0",
-            "fileVersion": "5.2.60510.0"
-          }
-        }
-      },
-      "Microsoft.AspNet.WebApi.Core/5.2.6": {
-        "dependencies": {
-          "Microsoft.AspNet.WebApi.Client": "5.2.6"
-        },
-        "runtime": {
-          "lib/net45/System.Web.Http.dll": {
-            "assemblyVersion": "5.2.6.0",
-            "fileVersion": "5.2.60510.0"
-          }
-        }
-      },
-      "Microsoft.AspNet.WebApi.WebHost/5.2.6": {
-        "dependencies": {
-          "Microsoft.AspNet.WebApi.Core": "5.2.6"
-        },
-        "runtime": {
-          "lib/net45/System.Web.Http.WebHost.dll": {
-            "assemblyVersion": "5.2.6.0",
-            "fileVersion": "5.2.60510.0"
           }
         }
       },
@@ -2890,6 +2855,7 @@
       },
       "Web_api_2/1.0.0": {
         "dependencies": {
+          "Microsoft.AspNetCore.Hosting": "2.1.1",
           "Microsoft.EntityFrameworkCore.InMemory": "2.1.1",
           "Microsoft.VisualStudio.Web.CodeGeneration.Design": "2.1.1"
         },
@@ -2911,27 +2877,6 @@
       "sha512": "sha512-ftwjDaILOT2HUVykOWJ2FhAbPo3PUDqydbd3g3flGT9FviKnAFKxCAEaZQi4gJV/mNFij2jLS2LblTYhj0/32g==",
       "path": "fluentassertions/5.4.1",
       "hashPath": "fluentassertions.5.4.1.nupkg.sha512"
-    },
-    "Microsoft.AspNet.WebApi.Client/5.2.6": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-rMDlyePoxggkmN/qgha1+BR2Uy+dOr38xKCQOPfVNKGY07R2nYJGMTKJFE1XFgwD70RYUNazf2fqutjJF18XgQ==",
-      "path": "microsoft.aspnet.webapi.client/5.2.6",
-      "hashPath": "microsoft.aspnet.webapi.client.5.2.6.nupkg.sha512"
-    },
-    "Microsoft.AspNet.WebApi.Core/5.2.6": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-QMFixs/MvKZXjfUbV0gXxF85LKi+keu/zJKv13upg/JlcxJ+wdLSYzyHO/sgPPUuFVstgndK6Zt3VduWeqFmHQ==",
-      "path": "microsoft.aspnet.webapi.core/5.2.6",
-      "hashPath": "microsoft.aspnet.webapi.core.5.2.6.nupkg.sha512"
-    },
-    "Microsoft.AspNet.WebApi.WebHost/5.2.6": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-ny16MQ4+96uvpirNl3psecTqb3joOh0X0RS/6UQYt5oty67gV2GhPn07nt57E3/2tCmnhoSOKl9/Shenp2m3kA==",
-      "path": "microsoft.aspnet.webapi.webhost/5.2.6",
-      "hashPath": "microsoft.aspnet.webapi.webhost.5.2.6.nupkg.sha512"
     },
     "Microsoft.AspNetCore.Antiforgery/2.1.1": {
       "type": "package",

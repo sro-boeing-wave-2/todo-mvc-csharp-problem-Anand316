@@ -58,6 +58,7 @@ namespace web
             Console.WriteLine(result.Count);
             Assert.Equal(2, result.Count);
         }
+
         [Fact]
         public async Task TestGetByTitle()
         {
@@ -98,7 +99,6 @@ namespace web
             var notes = okResult.Value.Should().BeAssignableTo<Note>().Subject;
             //var notes = controller.GetNote().ToList();
            // Assert.Equal(2, notes.Count);
-           
         }
 
         [Fact]
