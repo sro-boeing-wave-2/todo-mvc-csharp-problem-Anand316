@@ -19,7 +19,7 @@ namespace web
         public NotesControllerUnitTest()
         {
             var optionBuilder = new DbContextOptionsBuilder<NotesContext>();
-            optionBuilder.UseInMemoryDatabase("TestDB");
+            optionBuilder.UseInMemoryDatabase(Guid.NewGuid().ToString());
             todocontext = new NotesContext(optionBuilder.Options);
             controller = new NotesController(todocontext);
             CreateData();
@@ -46,7 +46,7 @@ namespace web
                 CList=new List<CheckList>() { new CheckList {ListOne="1",ListTwo="2"} }
             } };
 
-            todocontext.AddRange(notes);
+            todocontext.Note.AddRange(notes);
             todocontext.SaveChanges();
         }
 

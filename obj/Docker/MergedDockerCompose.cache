@@ -1,0 +1,19 @@
+services:
+  web_api_2:
+    build:
+      context: D:\workspace\aspdotnet\todo-mvc-csharp-problem-Anand316
+      dockerfile: Web_api_2/Dockerfile
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      ASPNETCORE_HTTPS_PORT: '44371'
+      ASPNETCORE_URLS: https://+:443;http://+:80
+    image: webapi2
+    ports:
+    - published: 49701
+      target: 80
+    - published: 44371
+      target: 443
+    volumes:
+    - /c/Users/Admin/AppData/Roaming/ASP.NET/Https:/root/.aspnet/https:ro
+    - /c/Users/Admin/AppData/Roaming/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
+version: '3.4'

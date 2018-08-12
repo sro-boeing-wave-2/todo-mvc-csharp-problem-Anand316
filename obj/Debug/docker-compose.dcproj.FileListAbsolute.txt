@@ -1,0 +1,1 @@
+D:\workspace\aspdotnet\todo-mvc-csharp-problem-Anand316\obj\Debug\docker-compose.dcproj.CoreCompileInputs.cache

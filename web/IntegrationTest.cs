@@ -149,9 +149,6 @@ namespace ToDoAssignment.Tests
             var stringContent = new StringContent(json, UnicodeEncoding.UTF8, "application/json");
             var Response = await _client.PutAsync("/api/Notes/1", stringContent);
 
-            string jsonResult = await Response.Content.ReadAsStringAsync();
-            var notes = JsonConvert.DeserializeObject<Note>(jsonResult);
-
             Response.EnsureSuccessStatusCode();
         }
 
@@ -166,15 +163,12 @@ namespace ToDoAssignment.Tests
         [Fact]
         public async Task PostNoteInvalidAsync()
         {
-            // Arrange
             var noteToAdd = new Note { PlainText = "Planes" };
             var content = JsonConvert.SerializeObject(noteToAdd);
             var stringContent = new StringContent(content, Encoding.UTF8, "application/json");
 
-            // Act
             var response = await _client.PostAsync("/api/Notes", stringContent);
 
-            // Assert
             response.StatusCode.Should().Be(System.Net.HttpStatusCode.BadRequest);
           
         }
@@ -182,15 +176,12 @@ namespace ToDoAssignment.Tests
         [Fact]
         public async Task PutNoteInvalidAsync()
         {
-            // Arrange
             var noteToChange = new Note { PlainText = "Bicycle" };
             var content = JsonConvert.SerializeObject(noteToChange);
             var stringContent = new StringContent(content, Encoding.UTF8, "application/json");
 
-            // Act
             var response = await _client.PutAsync("/api/Notes/5", stringContent);
 
-            // Assert
             response.StatusCode.Should().Be(System.Net.HttpStatusCode.BadRequest);
         }
 

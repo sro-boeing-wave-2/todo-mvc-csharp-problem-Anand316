@@ -12340,9 +12340,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\workspace\\aspdotnet\\todo-mvc-csharp-problem-Anand316\\Web_api_2\\Web_api.csproj",
-      "projectName": "Web_api",
-      "projectPath": "D:\\workspace\\aspdotnet\\todo-mvc-csharp-problem-Anand316\\Web_api_2\\Web_api.csproj",
+      "projectUniqueName": "D:\\workspace\\aspdotnet\\todo-mvc-csharp-problem-Anand316\\Web_api_2\\Web_api_2.csproj",
+      "projectName": "Web_api_2",
+      "projectPath": "D:\\workspace\\aspdotnet\\todo-mvc-csharp-problem-Anand316\\Web_api_2\\Web_api_2.csproj",
       "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
       "outputPath": "D:\\workspace\\aspdotnet\\todo-mvc-csharp-problem-Anand316\\Web_api_2\\obj\\",
       "projectStyle": "PackageReference",
