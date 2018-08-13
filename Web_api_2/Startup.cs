@@ -30,7 +30,7 @@ namespace ToDoAssignment
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            var connection = @"Server=db;Database=master;User=sa;Password=Your_password123;";
+            var connection = @"Server =db;Database=master;User=sa;Password=Your_password123";
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
 
@@ -46,6 +46,7 @@ namespace ToDoAssignment
             }
             else
             {
+
                 services.AddDbContext<NotesContext>(options =>
                     options.UseSqlServer(connection));
             }

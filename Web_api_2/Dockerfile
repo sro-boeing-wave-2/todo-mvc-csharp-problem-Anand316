@@ -14,13 +14,14 @@ RUN dotnet build Web_api_2.csproj -c Release -o /app
 FROM build AS publish
 RUN dotnet publish Web_api_2.csproj -c Release -o /app
 
-#FROM base AS final
-#WORKDIR /app
-#COPY --from=publish /app .
-#ENTRYPOINT ["dotnet", "Web_api_2.dll"]
-
-EXPOSE 80/tcp
-ENTRYPOINT ["dotnet", "Web_api_2.dll" "./entrypoint.sh"]
 #RUN chmod +x ./entrypoint.sh
 #CMD /bin/bash ./entrypoint.sh
+ENTRYPOINT ["entrypoint.sh"]
+
+FROM base AS final
+WORKDIR /app
+COPY --from=publish /app .
+ENTRYPOINT ["dotnet", "Web_api_2.dll"]
+
+
 
